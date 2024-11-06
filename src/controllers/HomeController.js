@@ -6,7 +6,6 @@ let getHomePage = (req, res) => {
   return res.render("homepage.ejs");
 };
 
-// curl -X GET "localhost:8080/webhook?hub.verify_token=isJustRandomString&hub.challenge=CHALLENGE_ACCEPTED&hub.mode=subscribe"
 let postWebhook = (req, res) => {
   let body = req.body;
 
@@ -108,6 +107,8 @@ function handleMessage(sender_psid, received_message) {
   // Send the response message
   callSendAPI(sender_psid, response);
 }
+
+// Handles messaging_postbacks events
 function handlePostback(sender_psid, received_postback) {
   let response;
 
